@@ -6,7 +6,7 @@
 #SBATCH --partition=gpu                # Partition name
 #SBATCH --gres=gpu:1                   # Number of GPUs
 #SBATCH --cpus-per-task=4              # Number of CPU cores per task
-#SBATCH --mem=28G                      # Memory per node
+#SBATCH --mem=16G                      # Memory per node
 
 # Load modules or activate environment if needed
 module load python/3.8
