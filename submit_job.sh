@@ -8,6 +8,9 @@
 #SBATCH --cpus-per-task=4              # Number of CPU cores per task
 #SBATCH --mem=16G                      # Memory per node
 
+#Pre-requisites
+pip install transformers
+
 # Load modules or activate environment if needed
 module load python/3.8
 module load cuda/12.4
