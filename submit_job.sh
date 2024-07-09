@@ -9,13 +9,12 @@
 #SBATCH --mem=16G                      # Memory per node
 
 #Pre-requisites
-pip install transformers
-pip install datasets
+pip install numpy==1.22.4 torch transformers datasets
 
 # Load modules or activate environment if needed
 module load python/3.8
 module load cuda/12.4
 
 # Run the Python script
-python3 benchmark_llm.py
+python3 distilbert-base-uncased.py --sample_text "This is a great movie with a thrilling plot"
 

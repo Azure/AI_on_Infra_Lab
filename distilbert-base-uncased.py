@@ -2,6 +2,7 @@ import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from datasets import load_dataset
 import time
+import argparse
 
 def benchmark(model_name, dataset_name, batch_size=8):
     # Load model and tokenizer
@@ -36,8 +37,37 @@ def benchmark(model_name, dataset_name, batch_size=8):
     print(f'Total time for processing the dataset: {total_time:.2f} seconds')
     print(f'Average time per batch: {total_time / len(dataloader):.2f} seconds')
 
+def run_inference(model_name, sample_text):
+    # Load model and tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSequenceClassification.from_pretrained(model_name)
+    model.to('cuda')
+
+    # Tokenize the sample text
+    inputs = tokenizer(sample_text, return_tensors='pt', truncation=True, padding='max_length', max_length=128)
+    inputs = {key: value.to('cuda') for key, value in inputs.items()}
+
+    # Run inference
+    model.eval()
+    with torch.no_grad():
+        outputs = model(**inputs)
+        logits = outputs.logits
+        predictions = torch.argmax(logits, dim=-1)
+
+    return predictions.cpu().numpy()
+
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Benchmark and run inference using a pretrained model")
+    parser.add_argument("--sample_text", type=str, required=True, help="Sample text for inference")
+
+    args = parser.parse_args()
+
     model_name = 'distilbert-base-uncased'
     dataset_name = 'imdb'
+
+    # Run benchmark
     benchmark(model_name, dataset_name)
 
+    # Run sample inference
+    prediction = run_inference(model_name, args.sample_text)
+    print(f'Prediction for sample text: {prediction}')
