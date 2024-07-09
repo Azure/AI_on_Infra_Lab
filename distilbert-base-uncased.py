@@ -37,6 +37,10 @@ def benchmark(model_name, dataset_name, batch_size=8):
     print(f'Total time for processing the dataset: {total_time:.2f} seconds')
     print(f'Average time per batch: {total_time / len(dataloader):.2f} seconds')
 
+def interpret_prediction(prediction):
+    sentiment=["Negative Sentiment", "Positive Sentiment"]
+    return sentiment[prediction[0]]
+
 def run_inference(model_name, sample_text):
     # Load model and tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -70,4 +74,5 @@ if __name__ == "__main__":
 
     # Run sample inference
     prediction = run_inference(model_name, args.sample_text)
-    print(f'Prediction for sample text: {prediction}')
+    sentiment = interpret_prediction(prediction)
+    print(f'Prediction for sample text: {prediction} ({sentiment})')
