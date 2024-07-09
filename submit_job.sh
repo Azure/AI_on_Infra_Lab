@@ -10,6 +10,7 @@
 
 #Pre-requisites
 pip install transformers
+pip install datasets
 
 # Load modules or activate environment if needed
 module load python/3.8
