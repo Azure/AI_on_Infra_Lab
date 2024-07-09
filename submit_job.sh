@@ -2,7 +2,7 @@
 #SBATCH --job-name=llm_benchmark       # Job name
 #SBATCH --output=llm_benchmark.out     # Output file
 #SBATCH --error=llm_benchmark.err      # Error file
-#SBATCH --time=01:00:00                # Time limit (hh:mm:ss)
+#SBATCH --time=00:10:00                # Time limit (hh:mm:ss)
 #SBATCH --partition=gpu                # Partition name
 #SBATCH --gres=gpu:1                   # Number of GPUs
 #SBATCH --cpus-per-task=4              # Number of CPU cores per task
