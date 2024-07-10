@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=llm_benchmark       # Job name
-#SBATCH --output=llm_benchmark.out     # Output file
-#SBATCH --error=llm_benchmark.err      # Error file
+#SBATCH --job-name=bert_inference       # Job name
+#SBATCH --output=bert_inference.out     # Output file
+#SBATCH --error=bert_inference.err      # Error file
 #SBATCH --time=00:10:00                # Time limit (hh:mm:ss)
 #SBATCH --partition=gpu                # Partition name
 #SBATCH --gres=gpu:1                   # Number of GPUs
