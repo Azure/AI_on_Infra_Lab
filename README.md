@@ -1,6 +1,6 @@
 # AI on Infrastructure Lab
 
-## This repo will contain the lab files for the HPC/AI upskilling scenarios. Instructions are give to participants - not all files are located in this lab
+## This repo will contain the lab files for the HPC/AI upskilling scenarios. Instructions are give to participants - not all files are located in this repo
 
 -------------------------------------------------------------------------------------------------------------------------
 
